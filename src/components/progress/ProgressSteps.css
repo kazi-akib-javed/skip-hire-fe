@@ -1,0 +1,98 @@
+@import url("../../styles/variable.css");
+
+.progress-steps-container {
+  width: 100%;
+  background-color: var(--color-dark);
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+}
+
+.progress-steps::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  width: calc(100% - 20px);
+  height: 2px;
+  background-color: #444;
+  transform: translateX(-50%);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #555;
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+}
+
+.step.completed .step-circle {
+  background-color: var(--color-secondary);
+}
+
+.step.active .step-circle {
+  background-color: var(--color-info);
+}
+
+.step-label {
+  font-size: 0.7em;
+  color: var(--color-light-text);
+}
+
+.step.completed .step-label,
+.step.active .step-label {
+  color: var(--color-white);
+}
+
+/* Tablet and Desktop styles */
+@media (min-width: 769px) {
+  .progress-steps-container {
+    padding: 15px 0;
+  }
+
+  .progress-steps {
+    padding: 0 20px;
+  }
+
+  .progress-steps::before {
+    top: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+
+  .step-label {
+    font-size: var(--font-sm);
+  }
+}

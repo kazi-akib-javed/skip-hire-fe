@@ -1,0 +1,229 @@
+@import url('../../styles/variable.css');
+
+.skip-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.skip-selection header {
+  text-align: center;
+}
+
+.skip-selection h1 {
+  color: var(--color-primary);
+  font-size: var(--font-xxl);
+  margin-bottom: 0.5rem;
+}
+
+.skip-selection p {
+  color: var(--color-white);
+  font-size: var(--font-sm);
+}
+
+.skip-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+.loading-state,
+.error-state,
+.no-skips-found {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 18rem 0;
+  color: var(--color-white);
+  font-size: 1.1rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.error-state {
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+.skip-list > * {
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (hover: hover) {
+  .skip-list > *:hover {
+    transform: translateY(-4px);
+  }
+  .continue-button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateY(-2px);
+  }
+}
+
+.loading-state::after {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin: 0;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.continue-button-container {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.continue-button {
+  background-color: var(--color-success);
+  color: var(--color-dark);
+  padding: 0.875rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.75rem;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.1s ease;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 280px;
+  min-height: 44px;
+}
+
+.continue-button:active {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  transform: translateY(0);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.pagination-button {
+  background-color: var(--color-bg);
+  color: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background-color: rgba(0, 193, 255, 0.1);
+}
+
+.pagination-button.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tablet styles */
+@media (min-width: 640px) {
+  .skip-selection {
+    padding: 2rem;
+  }
+
+  .skip-selection h1 {
+    font-size: 2.5rem;
+  }
+
+  .skip-selection p {
+    font-size: 1.2rem;
+  }
+
+  .skip-list {
+    gap: 2rem;
+  }
+
+  .continue-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    max-width: 300px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .skip-selection {
+    padding-top: 20px;
+  }
+
+  .skip-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .continue-button {
+    padding: 1.25rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Large Desktop styles */
+@media (min-width: 1280px) {
+  .skip-selection {
+    padding-top: 40px;
+  }
+
+  .skip-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
